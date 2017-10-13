@@ -28,8 +28,8 @@
     "stylelint-rscss": "^0.4.0",
     "time-grunt": "^1.4.0"
   },
-  "main": "./build/**/*.js",
-  "types": "./build/**/*.ts",
+  "main": "./dist/**/*.js",
+  "types": "./dist/**/*.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gridonic/grunt.git"
