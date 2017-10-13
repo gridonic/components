@@ -3,7 +3,7 @@ module.exports = function init(grunt) {
     require('load-grunt-config')(grunt, {
         data: {
             src: './src',
-            dest: './build',
+            dest: './dist',
             get assets() {
                 const self = this;
 
