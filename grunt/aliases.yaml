@@ -1,0 +1,4 @@
+# Default grunt task
+default:
+    - clean
+    - ts
