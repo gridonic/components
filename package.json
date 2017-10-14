@@ -32,18 +32,14 @@
   "types": "./dist/**/*.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gridonic/grunt.git"
+    "url": "git+https://github.com/gridonic/components.git"
   },
   "keywords": [
-    "grunt",
-    "gridonic",
-    "task-runner",
-    "automation"
   ],
   "bugs": {
-    "url": "https://github.com/gridonic/grunt/issues"
+    "url": "https://github.com/gridonic/components/issues"
   },
-  "homepage": "https://github.com/gridonic/grunt#readme",
+  "homepage": "https://github.com/gridonic/components#readme",
   "dependencies": {
     "@types/node": "^8.0.34",
     "store2": "^2.5.7",
