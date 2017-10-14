@@ -1,12 +1,13 @@
 {
-  "name": "@gridonic/grunt",
+  "name": "@gridonic/components",
   "version": "1.0.0",
-  "description": "Our Grunt setup.",
-  "scripts": {
-  },
+  "description": "Tonic",
   "author": "Gridonic <hello@gridonic.ch>",
   "license": "MIT",
   "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "chai": "^4.1.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -23,6 +24,10 @@
     "grunt-ts": "^6.0.0-beta.16",
     "husky": "^0.13.3",
     "load-grunt-config": "^0.19.2",
+    "mocha": "^4.0.1",
+    "mocha-typescript": "^1.1.11",
+    "nyc": "^11.2.1",
+    "source-map-support": "^0.5.0",
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0",
     "stylelint-rscss": "^0.4.0",
@@ -34,8 +39,7 @@
     "type": "git",
     "url": "git+https://github.com/gridonic/components.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "bugs": {
     "url": "https://github.com/gridonic/components/issues"
   },
@@ -43,6 +47,10 @@
   "dependencies": {
     "@types/node": "^8.0.34",
     "store2": "^2.5.7",
+    "ts-node": "^3.3.0",
     "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register test/js/**/*.ts"
   }
 }
