@@ -56,6 +56,24 @@
     "typescript": "^2.5.3"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register src/js/test/**/*.ts"
+    "test": "nyc mocha --opts mocha.opts"
+  },
+  "nyc": {
+    "include": [
+      "src/js/src/**/*.ts"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }
