@@ -51,6 +51,7 @@
     "inversify": "^4.3.0",
     "reflect-metadata": "^0.1.10",
     "store2": "^2.5.7",
+    "tonic": "^0.1.0",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "typescript": "^2.5.3"

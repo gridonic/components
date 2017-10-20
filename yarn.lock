@@ -775,6 +775,12 @@ create-error-class@^3.0.1:
   dependencies:
     capture-stack-trace "^1.0.0"
 
+cron@~1.0.1:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/cron/-/cron-1.0.9.tgz#5177cf751f3263f00f45ebf69fead1ea96d31cfc"
+  dependencies:
+    moment-timezone "~0.3.0"
+
 cross-spawn@^4:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-4.0.2.tgz#7b9247621c23adfdd3856004a823cbe397424d41"
@@ -2961,7 +2967,7 @@ lodash.templatesettings@^3.0.0:
     lodash._reinterpolate "^3.0.0"
     lodash.escape "^3.0.0"
 
-lodash@^3.10.1, lodash@~3.10.1:
+lodash@^3.0.0, lodash@^3.10.1, lodash@~3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
@@ -3159,6 +3165,16 @@ mocha@^4.0.1:
     he "1.1.1"
     mkdirp "0.5.1"
     supports-color "4.4.0"
+
+moment-timezone@~0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.3.1.tgz#3ef47856b02d53b718a10a5ec2023aa299e07bf5"
+  dependencies:
+    moment ">= 2.6.0"
+
+"moment@>= 2.6.0":
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.1.tgz#56da1a2d1cbf01d38b7e1afc31c10bcfa1929167"
 
 ms@0.7.1:
   version "0.7.1"
@@ -4547,6 +4563,13 @@ to-absolute-glob@^0.1.1:
 to-fast-properties@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
+
+tonic@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/tonic/-/tonic-0.1.0.tgz#ceb5ca1eee8abbe66c94c3a40db06592995024fe"
+  dependencies:
+    cron "~1.0.1"
+    lodash "^3.0.0"
 
 tough-cookie@~2.3.0:
   version "2.3.3"

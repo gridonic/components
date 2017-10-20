@@ -1,7 +1,7 @@
 module.exports = {
-    js: {
-        files: ['<%= src %>/js/src/**/*.js'],
-        tasks: ['js']
+    ts: {
+        files: ['<%= src %>/js/src/**/*.ts'],
+        tasks: ['tslint:dev', 'ts:dev']
     },
     sass: {
         files: ['<%= src %>/sass/src/**/*.scss'],

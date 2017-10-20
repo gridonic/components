@@ -1,10 +1,18 @@
+import {injectable} from "inversify";
 import {TonicService} from "./TonicService";
 
 export interface INotifyable {
-    onNotification(sender: any, message: string);
+    onNotification(sender: {}, message: string): void;
 }
 
-export class NotificationService extends TonicService {
+export interface INotificationService {
+    fireNotification(sender: {}, message: string): INotificationService;
+    registerListener(listener: INotifyable): INotificationService;
+    unregisterListener(listener: INotifyable): INotificationService;
+}
+
+@injectable()
+export class NotificationService extends TonicService implements INotificationService {
     private listeners: INotifyable[];
 
     constructor() {
@@ -13,7 +21,11 @@ export class NotificationService extends TonicService {
         this.listeners = [];
     }
 
-    public fireNotification(sender: any, message: string) {
+    public gak(): string {
+        return "gak";
+    }
+
+    public fireNotification(sender: {}, message: string): NotificationService {
         this.listeners.forEach((listener) => {
             listener.onNotification(sender, message);
         });
@@ -21,13 +33,13 @@ export class NotificationService extends TonicService {
         return this;
     }
 
-    public registerListener(listener: INotifyable) {
+    public registerListener(listener: INotifyable): NotificationService {
         this.listeners.push(listener);
 
         return this;
     }
 
-    public unregisterListener(listener: INotifyable) {
+    public unregisterListener(listener: INotifyable): NotificationService {
         const index = this.listeners.indexOf(listener, 0);
         if (index > -1) {
             this.listeners.splice(index, 1);

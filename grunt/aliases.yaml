@@ -6,8 +6,14 @@ default:
 
 dist:
     - clean
-#    - tslint:dist
+    - tslint:dist
     - ts:dev
     - ts:lib
     - ts:es
     - ts:amd
+
+lint:
+    - tslint:dev
+
+watchify:
+    - watch

@@ -1,8 +1,11 @@
+import {injectable} from "inversify";
+import "reflect-metadata";
 import {INotifyable} from "./NotificationService";
 
-export  abstract class TonicService implements INotifyable {
+@injectable()
+export abstract class TonicService implements INotifyable {
     // noinspection JSUnusedLocalSymbols
-    public onNotification(sender: any, message: string) {
+    public onNotification(sender: {}, message: string): void {
         // override for handling notifications
     }
 }

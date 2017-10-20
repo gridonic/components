@@ -1,5 +1,6 @@
+import {injectable} from "inversify";
 import * as store from "store2";
-import {TonicService} from "./TonicService";
+import {TonicService} from "../TonicService";
 
 /**
  * The Debugger component is a simple debugging helper. Use it for example to
@@ -7,6 +8,7 @@ import {TonicService} from "./TonicService";
  *
  * TODO: taken from es6, transform to pure typescript
  */
+@injectable()
 export class DebuggerService extends TonicService {
     private enabled: boolean;
 
@@ -68,9 +70,9 @@ export class DebuggerService extends TonicService {
      * Logs a message to the client.
      *
      * @param {string} message The message to log.
-     * @param {object|number} options Optional options for changing the way of logging.
+     * @param {number} typeId
      */
-    public log(message: string, options: any = DebuggerService.CORE) {
+    public log(message: string, typeId: number = DebuggerService.CORE) {
         if (this.status === false) {
             return;
         }
@@ -79,23 +81,23 @@ export class DebuggerService extends TonicService {
         const styles = [];
 
         // Primitive type given? Pick correct type object from types table
-        const type = (typeof options === "number" ? DebuggerService.TYPE[options] : options.type) || {};
+        const type = DebuggerService.TYPE[typeId];
 
         // Emoji
         output.push(`%c${type.emoji}`);
         styles.push(["margin: 0 10px 0 -1.5em"].join(";"));
 
-        // If there is a label given, add it
-        if (options.label) {
-            output.push(`%c[${options.label}]`);
-            styles.push(["margin-right: 6px", "font-weight: bold", "text-transform: uppercase"].join(";"));
-        }
+        // // If there is a label given, add it
+        // if (options.label) {
+        //     output.push(`%c[${options.label}]`);
+        //     styles.push(["margin-right: 6px", "font-weight: bold", "text-transform: uppercase"].join(";"));
+        // }
 
         // Message
         output.push(`%c${message}`);
         styles.push(["font-weight: normal", "text-transform: none"].join(";"));
 
-        // noinspection TsLint
+        // tslint:disable-next-line
         console.log(output.join(""), ...styles);
     }
 

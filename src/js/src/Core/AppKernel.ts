@@ -1,4 +1,4 @@
-import {DebuggerService} from "../Service/DebuggerService";
+import {DebuggerService} from "../Service/Debug/DebuggerService";
 import {NotificationService} from "../Service/NotificationService";
 import {TonicService} from "../Service/TonicService";
 

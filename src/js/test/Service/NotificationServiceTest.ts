@@ -1,19 +1,22 @@
-import { expect } from "chai";
-import { slow, suite, test, timeout } from "mocha-typescript";
+import {expect} from "chai";
+import {slow, suite, test, timeout} from "mocha-typescript";
+import {AppContainer} from "../../src/Core/AppContainer";
 import {INotifyable, NotificationService} from "../../src/Service/NotificationService";
 
 class TestNotifyable implements INotifyable {
-    public sender: any;
+    public sender: {};
     public message: string;
 
-    public onNotification(sender: any, message: string) {
+    public onNotification(sender: {}, message: string): void {
         this.sender = sender;
         this.message = message;
     }
 }
 
-@suite class NotificationServiceTest {
-    @test public notification_sendNotification_ListenerGetsNotified() {
+@suite
+class NotificationServiceTest {
+    @test
+    public notification_sendNotification_ListenerGetsNotified(): NotificationServiceTest {
         const notificationService = new NotificationService();
 
         const testNotifyable1 = new TestNotifyable();
@@ -36,7 +39,8 @@ class TestNotifyable implements INotifyable {
         return this;
     }
 
-    @test public multipleNotifications_sendNotification_ListenerGetsNotified() {
+    @test
+    public multipleNotifications_sendNotification_ListenerGetsNotified(): NotificationServiceTest {
         const notificationService = new NotificationService();
 
         const testNotifyable1 = new TestNotifyable();
