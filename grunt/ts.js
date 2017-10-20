@@ -1,14 +1,47 @@
+const files = ['<%= src %>/js/src/tonic.ts'];
+
 module.exports = {
     options: {
         verbose: true,
+        moduleResolution: 'node',
         inlineSourceMap: true,
         inlineSources: true,
-        declaration: true,
-        rootDir: '<%= src %>/js',
-        target: 'es5'
+        lib: ['dom', 'es6'],
+        strict: true,
+        types: ['reflect-metadata'],
+        target: 'es6',
+        rootDir: '<%= src %>/js/src',
+        experimentalDecorators: true,
+        emitDecoratorMetadata: true,
+        removeComments: true,
+        preserveConstEnums: true,
+        suppressImplicitAnyIndexErrors: false
     },
-    default: {
-        src: ['<%= src %>/js/**/*.ts'],
-        outDir: '<%= dest %>/js'
+    dev: {
+        src: files,
+        outDir: 'build/dev'
+    },
+    lib: {
+        options: {
+            module: 'commonjs',
+            declaration: true,
+            declarationDir: '<%= dest %>/dst'
+        },
+        src: files,
+        outDir: '<%= dest %>/lib'
+    },
+    es: {
+        options: {
+            module: 'es6'
+        },
+        src: files,
+        outDir: '<%= dest %>/es'
+    },
+    amd: {
+        options: {
+            module: 'amd'
+        },
+        src: files,
+        outDir: '<%= dest %>/amd'
     }
 };

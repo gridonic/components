@@ -13,7 +13,7 @@ module.exports = function init(grunt) {
                     get js() { return `${this}/js`; },
                     get images() { return `${this}/images`; },
                     get fonts() { return `${this}/fonts`; }
-                }
+                };
             }
         },
         jitGrunt: {

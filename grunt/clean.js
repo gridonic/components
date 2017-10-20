@@ -1,5 +1,8 @@
 module.exports = {
     all: {
-        src: ['<%= (assets) %>', '<%= dest %>']
+        src: [
+            '<%= (assets) %>',
+            '<%= dest %>'
+        ]
     }
 };

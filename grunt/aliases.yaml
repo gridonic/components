@@ -1,4 +1,13 @@
 # Default grunt task
 default:
     - clean
-    - ts
+    - tslint:dev
+    - ts:dev
+
+dist:
+    - clean
+#    - tslint:dist
+    - ts:dev
+    - ts:lib
+    - ts:es
+    - ts:amd

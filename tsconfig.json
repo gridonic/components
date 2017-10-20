@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "es6",
+    "lib": [ "dom", "es6" ],
+    "types": ["mocha", "reflect-metadata"],
     "module": "commonjs",
-    "sourceMap": true,
     "experimentalDecorators": true,
-    "lib": [ "dom", "es6" ]
+    "emitDecoratorMetadata": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": false
   }
 }
