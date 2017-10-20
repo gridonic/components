@@ -25,7 +25,7 @@ module.exports = {
         options: {
             module: 'commonjs',
             declaration: true,
-            declarationDir: '<%= dest %>/dst'
+            declarationDir: '<%= dest %>/dts'
         },
         src: files,
         outDir: '<%= dest %>/lib'
