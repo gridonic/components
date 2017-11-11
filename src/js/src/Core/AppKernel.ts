@@ -1,47 +1,21 @@
 import {DebuggerService} from "../Service/Debug/DebuggerService";
-import {NotificationService} from "../Service/NotificationService";
-import {TonicService} from "../Service/TonicService";
+import {AppContainer} from "./AppContainer";
 
 export abstract class AppKernel {
+    private appContainer: AppContainer;
 
-    private debug: DebuggerService = null;
-    private notificationService: NotificationService = null;
+    public init(): AppKernel {
+        this.appContainer.build();
 
-    public getNotificationService() {
-        if (this.notificationService === null) {
-            this.notificationService = new NotificationService();
-            this.registerService(this.notificationService);
-        }
+        this.getDebuggerService().log("Initialize app...");
+        this.getDebuggerService().log("Register services...");
 
-        return this.notificationService;
-    }
-
-    public getDebug() {
-        if (this.debug === null) {
-            this.debug = this.registerService(new DebuggerService());
-            this.debug.detect();
-        }
-
-        return this.debug;
-    }
-
-    public init() {
-        this.getDebug().log("Initialize app...");
-        this.getDebug().log("Register services...");
-
-        this.registerServices();
-
-        this.getDebug().log("Initialization complete!");
+        this.getDebuggerService().log("Initialization complete!");
 
         return this;
     }
 
-    protected registerService<T extends TonicService>(service: T): T {
-        this.getNotificationService()
-            .registerListener(service);
-
-        return service;
+    protected getDebuggerService(): DebuggerService {
+        return this.appContainer.getDebuggerService();
     }
-
-    protected abstract registerServices();
 }

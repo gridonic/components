@@ -1,6 +1,5 @@
-import {injectable} from "inversify";
 import * as store from "store2";
-import {TonicService} from "../TonicService";
+import TonicService from "../TonicService";
 
 /**
  * The Debugger component is a simple debugging helper. Use it for example to
@@ -8,12 +7,14 @@ import {TonicService} from "../TonicService";
  *
  * TODO: taken from es6, transform to pure typescript
  */
-@injectable()
+// tslint:disable
 export class DebuggerService extends TonicService {
     private enabled: boolean;
 
     constructor() {
         super();
+
+        this.detect();
     }
 
     /**
@@ -141,3 +142,4 @@ export class DebuggerService extends TonicService {
     static get WARNING() { return 3; }
     // static get SUCCESS() { return 4; }
 }
+// tslint:enable

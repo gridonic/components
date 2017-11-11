@@ -1,5 +1,4 @@
-import {injectable} from "inversify";
-import {TonicService} from "./TonicService";
+import TonicService from "./TonicService";
 
 export interface INotifyable {
     onNotification(sender: {}, message: string): void;
@@ -11,7 +10,6 @@ export interface INotificationService {
     unregisterListener(listener: INotifyable): INotificationService;
 }
 
-@injectable()
 export class NotificationService extends TonicService implements INotificationService {
     private listeners: INotifyable[];
 
@@ -19,10 +17,6 @@ export class NotificationService extends TonicService implements INotificationSe
         super();
 
         this.listeners = [];
-    }
-
-    public gak(): string {
-        return "gak";
     }
 
     public fireNotification(sender: {}, message: string): NotificationService {

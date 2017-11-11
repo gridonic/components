@@ -4,12 +4,12 @@ module.exports = {
     options: {
         verbose: true,
         moduleResolution: 'node',
+        module: 'commonjs',
         inlineSourceMap: true,
         inlineSources: true,
-        lib: ['dom', 'es6'],
+        lib: ['dom', 'es5'],
         strict: true,
-        types: ['reflect-metadata'],
-        target: 'es6',
+        target: 'es5',
         rootDir: '<%= src %>/js/src',
         experimentalDecorators: true,
         emitDecoratorMetadata: true,
@@ -32,7 +32,7 @@ module.exports = {
     },
     es: {
         options: {
-            module: 'es6'
+            module: 'es2015'
         },
         src: files,
         outDir: '<%= dest %>/es'
