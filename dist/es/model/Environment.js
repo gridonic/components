@@ -1,0 +1,7 @@
+export var Environment;
+(function (Environment) {
+    Environment["Dev"] = "dev";
+    Environment["Prod"] = "prod";
+    Environment["Test"] = "test";
+})(Environment || (Environment = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRW52aXJvbm1lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvanMvc3JjL21vZGVsL0Vudmlyb25tZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUdBLE1BQU0sQ0FBTixJQUFZLFdBSVg7QUFKRCxXQUFZLFdBQVc7SUFDbkIsMEJBQVcsQ0FBQTtJQUNYLDRCQUFhLENBQUE7SUFDYiw0QkFBYSxDQUFBO0FBQ2pCLENBQUMsRUFKVyxXQUFXLEtBQVgsV0FBVyxRQUl0QiIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogRW51bSBkZWZpbmluZyB0aGUgZGVmYXVsdCBlbnZpcm9ubWVudHMgbGlrZSBcImRldlwiIG9yIFwicHJvZFwiLlxuICovXG5leHBvcnQgZW51bSBFbnZpcm9ubWVudCB7XG4gICAgRGV2ID0gXCJkZXZcIixcbiAgICBQcm9kID0gXCJwcm9kXCIsXG4gICAgVGVzdCA9IFwidGVzdFwiLFxufVxuIl19
