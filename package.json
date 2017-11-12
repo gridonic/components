@@ -50,7 +50,6 @@
   "homepage": "https://github.com/gridonic/components#readme",
   "dependencies": {
     "@types/node": "^8.0.34",
-    "store2": "^2.5.7",
     "tonic": "^0.1.0",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
