@@ -9,6 +9,7 @@
     "emitDecoratorMetadata": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": false
+    "suppressImplicitAnyIndexErrors": false,
+    "strict": true
   }
 }

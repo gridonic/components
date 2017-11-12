@@ -1,5 +1,5 @@
 import * as store from "store2";
-import TonicService from "../TonicService";
+import AppService from "../AppService";
 
 /**
  * The Debugger component is a simple debugging helper. Use it for example to
@@ -8,7 +8,7 @@ import TonicService from "../TonicService";
  * TODO: taken from es6, transform to pure typescript
  */
 // tslint:disable
-export class DebuggerService extends TonicService {
+export default class DebuggerService extends AppService {
     private enabled: boolean;
 
     constructor() {

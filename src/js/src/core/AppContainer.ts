@@ -1,10 +1,9 @@
-import {DebuggerService} from "../Service/Debug/DebuggerService";
-import {NotificationService} from "../Service/NotificationService";
-import TonicService from "../Service/TonicService";
+import AppService from "../service/AppService";
+import DebuggerService from "../service/Debug/DebuggerService";
+import NotificationService from "../service/NotificationService";
+import Container from "./Container";
 
-export abstract class AppContainer {
-    private serviceRegistration: { [key: string]: () => TonicService; } = {};
-    private services: { [key: string]: TonicService; } = {};
+export default abstract class AppContainer extends Container {
 
     public build(): void {
         this.register(
@@ -16,32 +15,19 @@ export abstract class AppContainer {
     }
 
     public getNotificationService(): NotificationService {
-        return this.get("service.core.notification") as NotificationService;
+        return this.get<NotificationService>("service.core.notification");
     }
 
     public getDebuggerService(): DebuggerService {
-        return this.get("service.debug.debugger") as DebuggerService;
+        return this.get<DebuggerService>("service.debug.debugger");
     }
 
-    protected register(name: string, init: () => TonicService): AppContainer {
-        this.serviceRegistration[name] = init;
-        return this;
-    }
+    protected createInstance(init: () => any): any {
+        const instance = super.createInstance(init);
 
-    protected get(name: string): TonicService {
-        if (!(name in this.services)) {
-            if (!(name in this.serviceRegistration)) {
-                throw new Error(`Service ${name} is not registered!`);
-            }
-            this.services[name] = this.createServiceInstance(this.serviceRegistration[name]);
+        if (instance instanceof AppService && !(instance instanceof NotificationService)) {
+            this.getNotificationService().registerListener(instance);
         }
-
-        return this.services[name];
-    }
-
-    protected createServiceInstance(init: () => TonicService): TonicService {
-        const instance = init();
-        this.getNotificationService().registerListener(instance);
 
         return instance;
     }

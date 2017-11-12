@@ -1,21 +1,41 @@
-import {DebuggerService} from "../Service/Debug/DebuggerService";
-import {AppContainer} from "./AppContainer";
+import DebuggerService from "../service/debug/DebuggerService";
+import AppContainer from "./AppContainer";
 
 export abstract class AppKernel {
-    private appContainer: AppContainer;
+    private _appContainer: AppContainer;
 
-    public init(): AppKernel {
-        this.appContainer.build();
+    private _env: string;
+    private _isDebug: boolean;
 
-        this.getDebuggerService().log("Initialize app...");
-        this.getDebuggerService().log("Register services...");
+    constructor(env: string, isDebug: boolean) {
+        this._env = env;
+        this._isDebug = isDebug;
+    }
 
-        this.getDebuggerService().log("Initialization complete!");
+    public boot(): AppKernel {
+        this._appContainer = this.createAppContainer();
+        this._appContainer.build();
+
+        this.debug().log("App booted!");
 
         return this;
     }
 
-    protected getDebuggerService(): DebuggerService {
-        return this.appContainer.getDebuggerService();
+    get env(): string {
+        return this._env;
     }
+
+    get isDebug(): boolean {
+        return this._isDebug;
+    }
+
+    get appContainer(): AppContainer {
+        return this._appContainer;
+    }
+
+    protected debug(): DebuggerService {
+        return this._appContainer.getDebuggerService();
+    }
+
+    protected abstract createAppContainer(): AppContainer;
 }

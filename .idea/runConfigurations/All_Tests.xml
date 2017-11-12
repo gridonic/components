@@ -6,7 +6,7 @@
     <pass-parent-env>true</pass-parent-env>
     <envs />
     <ui>bdd</ui>
-    <extra-mocha-options>--opts mocha.opts</extra-mocha-options>
+    <extra-mocha-options>--opts mocha.opts -r jsdom-global/register</extra-mocha-options>
     <test-kind>DIRECTORY</test-kind>
     <test-directory>$PROJECT_DIR$/src/js/test</test-directory>
     <recursive>true</recursive>

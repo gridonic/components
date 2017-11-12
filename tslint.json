@@ -5,12 +5,14 @@
   ],
   "jsRules": {},
   "rules": {
-    "no-any": true,
     "typedef": [
       true,
       "call-signature",
       "parameter",
       "member-variable-declaration"
+    ],
+    "variable-name": [
+      "allow-leading-underscore"
     ]
   },
   "rulesDirectory": []
