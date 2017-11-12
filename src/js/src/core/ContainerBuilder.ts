@@ -25,7 +25,20 @@ export default abstract class ContainerBuilder {
             return;
         }
 
+        if (env === Environment.Test) {
+            this.buildTest(isDebug);
+            return;
+        }
+
         this.buildEnv(env, isDebug);
+    }
+
+    /**
+     * Registers the given item in the container.
+     */
+    public register(name: string, init: () => any): ContainerBuilder {
+        this.container.register(name, init);
+        return this;
     }
 
     /**
@@ -53,12 +66,4 @@ export default abstract class ContainerBuilder {
      * This build method is called when a custom environment is set.
      */
     protected abstract buildEnv(env: string, isDebug: boolean): void;
-
-    /**
-     * Registers the given item in the container.
-     */
-    protected register(name: string, init: () => any): ContainerBuilder {
-        this.container.register(name, init);
-        return this;
-    }
 }

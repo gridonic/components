@@ -1,9 +1,8 @@
-import TonicService from "../TonicService";
-export declare class DebuggerService extends TonicService {
-    private enabled;
-    constructor();
-    status: boolean;
-    detect(): void;
+import AppService from "../AppService";
+export default class DebuggerService extends AppService {
+    private _enabled;
+    constructor(enabled: boolean);
+    enabled: boolean;
     log(message: string, typeId?: number): void;
     warn(message: string, options?: number): void;
     error(message: string, options?: number): void;

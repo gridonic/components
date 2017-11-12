@@ -4,18 +4,24 @@ import NotificationService from "../service/NotificationService";
 import Container from "./Container";
 
 export default abstract class AppContainer extends Container {
+    // tslint:disable-next-line
+    public static readonly Key = {
+        Debugger: "service.debug.debugger",
+        Notification: "service.core.notification",
+    };
+
     /**
      * @return {NotificationService}
      */
-    public getNotificationService(): NotificationService {
-        return this.get<NotificationService>("service.core.notification");
+    public get notificationService(): NotificationService {
+        return this.get<NotificationService>(AppContainer.Key.Notification);
     }
 
     /**
      * @return {DebuggerService}
      */
-    public getDebuggerService(): DebuggerService {
-        return this.get<DebuggerService>("service.debug.debugger");
+    public get debuggerService(): DebuggerService {
+        return this.get<DebuggerService>(AppContainer.Key.Debugger);
     }
 
     /**
@@ -43,6 +49,6 @@ export default abstract class AppContainer extends Container {
      * Inject the default dependencies into the given service
      */
     protected wireServiceWithDefaultDependencies(instance: AppService): void {
-        this.getNotificationService().registerListener(instance);
+        this.notificationService.registerListener(instance);
     }
 }

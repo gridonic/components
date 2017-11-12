@@ -8,10 +8,12 @@ import AppService from "../AppService";
  */
 // tslint:disable
 export default class DebuggerService extends AppService {
-    private enabled: boolean;
+    private _enabled: boolean;
 
-    constructor() {
+    constructor(enabled: boolean) {
         super();
+
+        this._enabled = enabled;
     }
 
     /**
@@ -19,8 +21,8 @@ export default class DebuggerService extends AppService {
      *
      * @return {boolean}
      */
-    get status(): boolean {
-        return this.enabled || false;
+    get enabled(): boolean {
+        return this._enabled || false;
     }
 
     /**
@@ -28,7 +30,7 @@ export default class DebuggerService extends AppService {
      *
      * @param {boolean} status
      */
-    set status(status) {
+    set enabled(status) {
         const $root = window.document.documentElement;
 
         this.enabled = Boolean(status);
@@ -44,7 +46,7 @@ export default class DebuggerService extends AppService {
      * @param {number} typeId
      */
     public log(message: string, typeId: number = DebuggerService.CORE) {
-        if (this.status === false) {
+        if (this.enabled === false) {
             return;
         }
 

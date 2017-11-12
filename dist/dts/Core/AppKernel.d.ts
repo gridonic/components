@@ -1,6 +1,17 @@
-import { DebuggerService } from "../Service/Debug/DebuggerService";
+import DebuggerService from "../service/debug/DebuggerService";
+import AppContainer from "./AppContainer";
+import ContainerBuilder from "./ContainerBuilder";
 export declare abstract class AppKernel {
-    private appContainer;
-    init(): AppKernel;
-    protected getDebuggerService(): DebuggerService;
+    private _appContainer;
+    private _env;
+    private _isDebug;
+    constructor(env: string, isDebug?: boolean);
+    readonly env: string;
+    readonly isDebug: boolean;
+    readonly appContainer: AppContainer;
+    boot(): AppKernel;
+    protected buildContainer(): void;
+    protected debug(): DebuggerService;
+    protected abstract createAppContainer(): AppContainer;
+    protected abstract createAppContainerBuilder(): ContainerBuilder;
 }

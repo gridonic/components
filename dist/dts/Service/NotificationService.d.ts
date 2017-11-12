@@ -1,16 +1,16 @@
-import TonicService from "./TonicService";
+import AppService from "./AppService";
 export interface INotifyable {
-    onNotification(sender: {}, message: string): void;
+    onNotification(sender: any, message: string): void;
 }
 export interface INotificationService {
-    fireNotification(sender: {}, message: string): INotificationService;
+    fireNotification(sender: any, message: string): INotificationService;
     registerListener(listener: INotifyable): INotificationService;
     unregisterListener(listener: INotifyable): INotificationService;
 }
-export declare class NotificationService extends TonicService implements INotificationService {
+export default class NotificationService extends AppService implements INotificationService {
     private listeners;
     constructor();
-    fireNotification(sender: {}, message: string): NotificationService;
+    fireNotification(sender: any, message: string): NotificationService;
     registerListener(listener: INotifyable): NotificationService;
     unregisterListener(listener: INotifyable): NotificationService;
 }

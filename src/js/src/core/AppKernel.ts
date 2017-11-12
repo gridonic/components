@@ -9,7 +9,7 @@ export abstract class AppKernel {
     private _env: string;
     private _isDebug: boolean;
 
-    constructor(env: string, isDebug: boolean) {
+    constructor(env: string, isDebug: boolean = false) {
         this._env = env;
         this._isDebug = isDebug;
     }
@@ -44,7 +44,7 @@ export abstract class AppKernel {
     }
 
     protected debug(): DebuggerService {
-        return this._appContainer.getDebuggerService();
+        return this._appContainer.debuggerService;
     }
 
     protected abstract createAppContainer(): AppContainer;

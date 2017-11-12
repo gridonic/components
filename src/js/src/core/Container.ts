@@ -16,7 +16,7 @@ export default abstract class Container {
         return this;
     }
 
-    protected get<T>(name: string): any {
+    public get<T>(name: string): T {
         if (!(name in this.instances)) {
             if (!(name in this.registration)) {
                 throw new Error(`Service ${name} is not registered!`);
