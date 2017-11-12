@@ -3,7 +3,7 @@ import AppContainer from "./AppContainer";
 import ContainerBuilder from "./ContainerBuilder";
 import FrameworkContainerBuilder from "./FrameworkContainerBuilder";
 
-export abstract class AppKernel {
+export default abstract class AppKernel {
     private _appContainer: AppContainer;
 
     private _env: string;

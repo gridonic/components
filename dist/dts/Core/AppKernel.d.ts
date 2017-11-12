@@ -1,7 +1,7 @@
 import DebuggerService from "../service/debug/DebuggerService";
 import AppContainer from "./AppContainer";
 import ContainerBuilder from "./ContainerBuilder";
-export declare abstract class AppKernel {
+export default abstract class AppKernel {
     private _appContainer;
     private _env;
     private _isDebug;
