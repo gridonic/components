@@ -5,6 +5,8 @@
   ],
   "jsRules": {},
   "rules": {
+    "no-unused-expression": false,
+    "max-classes-per-file": [ false ],
     "typedef": [
       true,
       "call-signature",

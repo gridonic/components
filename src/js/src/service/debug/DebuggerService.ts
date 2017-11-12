@@ -1,4 +1,3 @@
-import * as store from "store2";
 import AppService from "../AppService";
 
 /**
@@ -13,8 +12,6 @@ export default class DebuggerService extends AppService {
 
     constructor() {
         super();
-
-        this.detect();
     }
 
     /**
@@ -38,33 +35,6 @@ export default class DebuggerService extends AppService {
 
         // Delegate status to CSS as well
         $root.classList[this.enabled ? "add" : "remove"]("debug-mode");
-
-        // If localStorage is available, write the current status into it. Note that a fake store is used if
-        // it is not available
-        store.set("debug", this.enabled);
-    }
-
-    /**
-     * Detects from the current request url if debugging is enabled or not, if
-     * there is nothing defined within the request it will check the
-     * localStorage for any data.
-     */
-    public detect() {
-        const match = window.location.href.match(/debug=(\d|true|false)/i);
-
-        // Try to get debugging status from localStorage
-        try {
-            this.status = JSON.parse(store.get("debug"));
-        } catch (e) {
-            this.status = false;
-        }
-
-        // We have a new status, override it
-        if (match) {
-            const status = match[1].toLowerCase();
-
-            this.status = status === "1" || status === "true";
-        }
     }
 
     /**

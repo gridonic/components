@@ -1,6 +1,15 @@
+import ContainerBuilder from "./ContainerBuilder";
+
 export default abstract class Container {
     private registration: { [key: string]: () => any; } = {};
     private instances: { [key: string]: any; } = {};
+
+    /**
+     * Used to build the container, registering all the dependencies like services, factories, parameters, ...
+     */
+    public build(builder: ContainerBuilder, env: string, isDebug: boolean): void {
+       builder.build(this, env, isDebug);
+    }
 
     public register(name: string, init: () => any): Container {
         this.registration[name] = init;

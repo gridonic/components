@@ -20,8 +20,8 @@ class NotificationServiceTest {
 
         const testNotifyable = new TestNotifyable();
 
-        expect(testNotifyable.sender).to.be.an("undefined");
-        expect(testNotifyable.message).to.be.an("undefined");
+        expect(testNotifyable.sender).to.be.undefined;
+        expect(testNotifyable.message).to.be.undefined;
 
         notificationService.registerListener(testNotifyable);
         notificationService.fireNotification("sender", "event");
@@ -42,10 +42,10 @@ class NotificationServiceTest {
         const testNotifyable1 = new TestNotifyable();
         const testNotifyable2 = new TestNotifyable();
 
-        expect(testNotifyable1.sender).to.be.an("undefined");
-        expect(testNotifyable1.message).to.be.an("undefined");
-        expect(testNotifyable2.sender).to.be.an("undefined");
-        expect(testNotifyable2.message).to.be.an("undefined");
+        expect(testNotifyable1.sender).to.be.undefined;
+        expect(testNotifyable1.message).to.be.undefined;
+        expect(testNotifyable2.sender).to.be.undefined;
+        expect(testNotifyable2.message).to.be.undefined;
 
         notificationService.registerListener(testNotifyable1);
         notificationService.fireNotification("sender", "event");

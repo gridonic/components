@@ -1,5 +1,7 @@
 import DebuggerService from "../service/debug/DebuggerService";
 import AppContainer from "./AppContainer";
+import ContainerBuilder from "./ContainerBuilder";
+import FrameworkContainerBuilder from "./FrameworkContainerBuilder";
 
 export abstract class AppKernel {
     private _appContainer: AppContainer;
@@ -10,15 +12,6 @@ export abstract class AppKernel {
     constructor(env: string, isDebug: boolean) {
         this._env = env;
         this._isDebug = isDebug;
-    }
-
-    public boot(): AppKernel {
-        this._appContainer = this.createAppContainer();
-        this._appContainer.build();
-
-        this.debug().log("App booted!");
-
-        return this;
     }
 
     get env(): string {
@@ -33,9 +26,27 @@ export abstract class AppKernel {
         return this._appContainer;
     }
 
+    public boot(): AppKernel {
+        this._appContainer = this.createAppContainer();
+        this.buildContainer();
+
+        this.debug().log("App booted!");
+
+        return this;
+    }
+
+    protected buildContainer(): void {
+        const frameworkContainerBuilder = new FrameworkContainerBuilder();
+        const appContainerBuilder = this.createAppContainerBuilder();
+
+        this.appContainer.build(frameworkContainerBuilder, this.env, this.isDebug);
+        this.appContainer.build(appContainerBuilder, this.env, this.isDebug);
+    }
+
     protected debug(): DebuggerService {
         return this._appContainer.getDebuggerService();
     }
 
     protected abstract createAppContainer(): AppContainer;
+    protected abstract createAppContainerBuilder(): ContainerBuilder;
 }
