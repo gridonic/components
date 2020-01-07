@@ -1,0 +1,17 @@
+@mixin gd-button-plain {
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  color: currentColor;
+  display: inline-flex;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  width: auto;
+
+  // Don’t do it.
+  // @see https://medium.com/simple-human/buttons-shouldnt-have-a-hand-cursor-b11e99ca374b
+  // cursor: pointer;
+}
