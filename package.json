@@ -1,5 +1,5 @@
 {
-  "name": "components",
+  "name": "@gridonic/components",
   "version": "0.1.0",
   "scripts": {
     "build": "tsc",
@@ -10,7 +10,8 @@
   },
   "main": "dist/index.js",
   "files": [
-    "src/**/*",
+    "vue/**/*",
+    "styles/**/*",
     "dist/**/*"
   ],
   "dependencies": {
