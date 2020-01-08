@@ -31,7 +31,8 @@ Also make sure to **write tests**. Please for the love of god, do it. Just run `
 
 <br><br><br><br>
 
-#  
+---
+ 
 <p align="center">
   &copy; Gridonic – smashing keys the hard way since 2010.<br><br>
   <a href="https://gridonic.ch">gridonic.ch</a> ・
