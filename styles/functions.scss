@@ -1,0 +1,43 @@
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace [""] - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+/// Escapes weird characters in a string to make it safe for using as a class
+/// selector.
+/// @author Gridonic
+/// @param {String} $string - Class string to escape
+/// @return {String}
+/// @link https://mathiasbynens.be/notes/css-escapes
+@function escape-string($string) {
+  @if type-of($string) != "string" {
+    $string: inspect($string);
+  }
+
+  $weird: (
+    "\\", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-",
+    "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "`", "{", ".",
+    "|", "}", "~", " "
+  );
+
+  @each $char in $weird {
+    $string: str-replace($string, $char, #{"\\" + $char});
+  }
+
+  @return $string;
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
