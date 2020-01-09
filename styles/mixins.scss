@@ -1,8 +1,4 @@
-@if function_exists('strip-units') == false {
-  @function strip-unit($value) {
-    @return $value / ($value * 0 + 1);
-  }
-}
+@import "functions";
 
 @mixin gd-fluid-property($property, $min, $max) {
   $fluid-viewport: (320px, 1440px) !default;
@@ -30,6 +26,58 @@
 
     @media (min-width: $max-viewport) {
       #{$property}: $max;
+    }
+  }
+}
+
+@mixin gd-vertical-spacing {
+  $breakpoints: (
+    sm: 320px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1440px
+  ) !default;
+
+  // @see https://github.com/eduardoboucas/include-media/issues/14
+  $unit-intervals: ("px": 1, "em": 0.065, "rem": 0.0625) !default;
+
+  // Set the breakpoints for the grid. You should always provide at
+  // least one breakpoint without a resolution. This one will be used for
+  // naming of the initial classes.
+  $grid-breakpoints: map-merge((xs: null), $breakpoints) !default;
+
+  // Configuration for a vertical “rhythym” or system.
+  $vertical-factors: 0, 1, 1.5, 2, 2.5, 3, 4, 5, 6 !default;
+  $vertical-spacing: 1lh !default;
+  $vertical-properties: (m: margin, p: padding) !default;
+  $vertical-sides: (t: top, b: bottom) !default;
+  $vertical-breakpoints: $grid-breakpoints !default;
+
+  @if mixin-exists('media') == false {
+    @error "Could not find media() mixin. Make sure you have include-media installed.";
+  }
+
+  @each $property-name, $property-value in $vertical-properties {
+    @each $side-name, $side-value in $vertical-sides {
+      @each $breakpoint-name, $breakpoint-value in $vertical-breakpoints {
+        @if $breakpoint-value {
+          @include media(">=#{$breakpoint-name}") {
+            @each $factor in $vertical-factors {
+              ._#{$property-name}#{$side-name}-#{$breakpoint-name}-#{escape-string($factor)} {
+                #{$property-value}-#{$side-value}: $factor * $vertical-spacing !important;
+              }
+            }
+          }
+        }
+
+        @else {
+          @each $factor in $vertical-factors {
+            ._#{$property-name}#{$side-name}-#{$breakpoint-name}-#{escape-string($factor)} {
+              #{$property-value}-#{$side-value}: $factor * $vertical-spacing !important;
+            }
+          }
+        }
+      }
     }
   }
 }
