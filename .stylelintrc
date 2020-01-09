@@ -7,7 +7,7 @@
   ],
   "rules": {
     "at-rule-no-unknown": [true, {
-      "ignoreAtRules": ["function", "if", "else", "each", "include", "mixin", "extend", "debug", "return"]
+      "ignoreAtRules": ["function", "if", "else", "each", "include", "mixin", "extend", "debug", "return", "error"]
     }],
     "unit-no-unknown": [true, { "ignoreUnits": ["/lh/", "string"] }],
   }
