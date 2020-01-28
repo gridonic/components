@@ -1,6 +1,6 @@
 {
   "name": "@gridonic/components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "build": "tsc",
     "lint": "vue-cli-service lint",
@@ -12,7 +12,8 @@
   "files": [
     "vue/**/*",
     "styles/**/*",
-    "dist/**/*"
+    "dist/**/*",
+    "styles.scss"
   ],
   "dependencies": {
     "core-js": "^3.6.2",

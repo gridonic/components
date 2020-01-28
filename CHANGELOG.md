@@ -10,9 +10,24 @@ Looking for [unreleased] changes?
 
 <br>
 
+## [0.2.0]
+###### 2020-01-28
+
+###### Added
+
+- `<button>`/`<input>` should inherit typography by default
+- `styles.scss` file for complete import 
+- layout and typography files
+
+
+<br>
+
 ## 0.1.0
-###### 2019-02-18
+###### 2020-01-10
 
 First version ready for internal testing.
 
-[unreleased]: https://github.com/gridonic/components/compare/0.1.0...HEAD
+
+[unreleased]: https://github.com/gridonic/components/compare/0.2.0...HEAD
+
+[0.2.0]: https://github.com/gridonic/components/compare/0.1.0...0.2.0
