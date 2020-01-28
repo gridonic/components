@@ -1,0 +1,43 @@
+@import "functions";
+
+@mixin gd-fluid-property($property, $min, $max) {
+  $fluid-viewport: (320px, 1440px) !default;
+
+  $min-viewport: nth($fluid-viewport, 1);
+  $max-viewport: nth($fluid-viewport, 2);
+
+  @if (
+    unit($min-viewport) != unit($max-viewport) and
+    unit($min-viewport) != unit($min) and
+    unit($min-viewport) != unit($max)
+  ) {
+    @debug "Units for gd-fluid-property() must be equal.";
+  }
+
+  @else {
+    #{$property}: $min;
+
+    @media (min-width: $min-viewport) {
+      $diff: strip-unit($max - $min);
+      $diff-vw: strip-unit($max-viewport - $min-viewport);
+
+      #{$property}: calc(#{$min} + #{$diff} * ((100vw - #{$min-viewport}) / #{$diff-vw}));
+    }
+
+    @media (min-width: $max-viewport) {
+      #{$property}: $max;
+    }
+  }
+}
+
+@mixin gd-font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
