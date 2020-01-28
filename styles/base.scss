@@ -24,4 +24,9 @@
     // @see https://stackoverflow.com/a/5804278/4628548
     vertical-align: if(map-has-key($settings, 'image-align'), map-get($settings, 'image-align'), top);
   }
+
+  button,
+  input {
+    font: inherit;
+  }
 }
