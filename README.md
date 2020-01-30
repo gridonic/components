@@ -28,6 +28,17 @@ Ask your [co-workers](https://gridonic.ch/team), [Google](https://google.com), [
 
 Also make sure to **write tests**. Please for the love of god, do it. Just run `npm run test` to test your tests.
 
+# Publishing
+
+When ready to release, execute the following steps, given that all changes are commited in the master branch:
+
+- List changes in the CHANGELOG.md
+- Bump your version and automatically create a git tag with `npm version <type>`, where type is `patch`, `minor` or `major`
+- Push the master branch `git push` and the tags `git push --tags`
+- Create a release in github and fill the description with at least a link to the CHANGELOG.md. Add more information if necessary
+
+That's it! A github action will then automatically publish the package to npm.
+
 
 <br><br><br><br>
 
