@@ -1,4 +1,4 @@
-![Gridonic Components](./media/logo.png)<br><br><br>
+![Gridonic Components](https://gridonic.github.io/components/media/banner.gif)<br><br><br>
 
 # DRY
 
