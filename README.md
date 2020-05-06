@@ -30,7 +30,7 @@ Also make sure to **write tests**. Please for the love of god, do it. Just run `
 
 <br><br>
 
-# Publishing
+# How do I publish this thing?
 
 When ready to release, execute the following steps, given that all changes are commited in the `master` branch:
 
