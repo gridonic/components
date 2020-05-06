@@ -28,6 +28,8 @@ Ask your [co-workers](https://gridonic.ch/team), [Google](https://google.com), [
 
 Also make sure to **write tests**. Please for the love of god, do it. Just run `npm run test` to test your tests.
 
+<br><br>
+
 # Publishing
 
 When ready to release, execute the following steps, given that all changes are commited in the `master` branch:
