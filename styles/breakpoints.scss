@@ -1,0 +1,42 @@
+// @see https://github.com/eduardoboucas/include-media/issues/14
+$unit-intervals: ("px": 1, "em": 0.065, "rem": 0.0625) !default;
+
+$breakpoints: (
+  sm: 600px,
+  md: 900px,
+  lg: 1200px
+) !default;
+
+//            sm      md      lg
+//    |-------|-------|-------|-------|
+
+//           ViewPort Aliases
+//    +-------+-------+-------+-------+
+//    |  $sm  |  $md  |  $lg  |  $xl  |
+//    |-------+-------+-------+-------|
+//    |  $sm  |       $sm-up          |
+//    |-------+-------+---------------|
+//    |   $md-down    |    $md-up     |
+//    |-------+-------+-------+-------|
+//    |  $sm  |    $sm-lg     |  $xl  |
+//    |-----------------------+-------|
+//    |       $lg-down        |  $xl  |
+//    +-----------------------+-------+
+
+$sm: "<sm";
+$md: ">=sm", "<md";
+$lg: ">=md", "<lg";
+$xl: ">=lg";
+
+$sm-up: ">=sm";
+$md-up: ">=md";
+
+$md-down: "<md";
+$lg-down: "<lg";
+
+$sm-lg: ">=sm", "<lg";
+
+// HOW TO:
+// @see https://eduardoboucas.github.io/include-media/
+// three dots after variable are important
+// @include media($lg-down...) {}
